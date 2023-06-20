@@ -1,6 +1,6 @@
 #!/bin/bash
 
-README_CONTENT="# test"
+README_CONTENT="--LEGACY--"
 
 add_repo_to_hosting_repo() {
 		path_repo_to_branch="$1"

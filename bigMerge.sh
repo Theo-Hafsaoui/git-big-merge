@@ -8,7 +8,7 @@ add_repo_to_hosting_repo() {
 		cd ./page/
 		echo $branch_name
 		echo $branch_name
-		git switch --creat $branch_name && git remote add  $branch_name ../$path_repo_to_branch  && git fetch --all --quiet && git rebase $branch_name/master && python ../git-filter-repo --prune-empty=always --force
+		git switch --creat $branch_name && git remote add  $branch_name ../$path_repo_to_branch  && git fetch --all --quiet && git move -b remotes/$branch_name/master -d $branch_name && python ../git-filter-repo --prune-empty=always --force
 		git switch master
 		echo "le repo est $repo_to_branch sur la branche $branch_name "
 		cd ../
@@ -19,7 +19,7 @@ init_hosting_repo() {
 		mkdir page;
 		cd page;
 		echo "$README_CONTENT" > readme.md;
-		git init && git add readme.md && git commit -m "init"
+		cargo install git-branchless && git init && git add readme.md && git commit -m "init" && git branchless init;
 		git config filter.branch.squelchWarning true
 		cd ../
 }
